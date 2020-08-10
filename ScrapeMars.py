@@ -4,11 +4,9 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import time
-import warnings
-warnings.filterwarnings('ignore')
 
 def init_browser():
-    executable_path = {'executable_path': 'C:\chromedriver.exe'}
+    executable_path = {'executable_path': 'driver/chromedriver.exe'}
     return Browser('chrome', **executable_path, headless=False)
 
 def scrape():
@@ -81,7 +79,7 @@ def scrape():
         hemisphere_image_urls.append({"title": title, "img_url": image_url})
 
         
-    mars_data = {
+    mars = {
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image_url": featured_image_url,
@@ -93,7 +91,7 @@ def scrape():
     browser.quit()
 
     # Return results
-    return mars_data
+    return mars
 
 if __name__ == '__main__':
     scrape()
