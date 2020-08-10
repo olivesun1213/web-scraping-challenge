@@ -4,11 +4,12 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import time
+import warnings
+warnings.filterwarnings('ignore')
+
 def init_browser():
     executable_path = {'executable_path': 'C:\chromedriver.exe'}
     return Browser('chrome', **executable_path, headless=False)
-
-
 
 def scrape():
     browser = init_browser()
