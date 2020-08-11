@@ -20,7 +20,7 @@ def scrape():
     Latest_article = soup.find("div", class_='list_text')
     news_title =Latest_article.find("div", class_="content_title").text
     news_paragraph = Latest_article.find("div", class_ ="article_teaser_body").text
-
+   
     
 #scrape  Mars Image
  
@@ -28,14 +28,14 @@ def scrape():
     image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(image_url)
     browser.click_link_by_partial_text('FULL IMAGE')
-    time.sleep(10)
+    time.sleep(5)
     browser.click_link_by_partial_text('more info')
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     image_url=soup.find("figure", class_='lede').a['href']
     main_url="https://www.jpl.nasa.gov"
     featured_image_url=main_url+image_url
-
+    
 
  
 #scrape  Mars Facts
