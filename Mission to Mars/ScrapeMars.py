@@ -10,7 +10,7 @@ def init_browser():
     return Browser('chrome', **executable_path, headless=False)
 
 
-def scrape():
+def scrape_info():
     browser = init_browser()
     #scrape news
     url = "https://mars.nasa.gov/news/"
@@ -36,7 +36,13 @@ def scrape():
     main_url="https://www.jpl.nasa.gov"
     featured_image_url=main_url+image_url
     
-
+#scrape  Mars weather
+    url2 = 'https://twitter.com/marswxreport?lang=en'
+    browser.visit(url2)
+    time.sleep(2)
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    tweet=soup.find_all("div",lang="en")[0].text
  
 #scrape  Mars Facts
 
@@ -86,6 +92,7 @@ def scrape():
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image_url": featured_image_url,
+        "mars_weather":tweet,
         "mars_facts": mars_table,
         "hemisphere_image_urls": hemisphere_image_urls
     }
@@ -96,5 +103,5 @@ def scrape():
     return mars_data
 
 if __name__ == '__main__':
-    scrape()
+    scrape_info()
 

@@ -17,7 +17,7 @@ def home():
 @app.route("/scrape")
 def scrape():
     mars_data=mongo.db.mars_data
-    mars_info=ScrapeMars.scrape()
+    mars_info=ScrapeMars.scrape_info()
     
 
     # Update the Mongo database using update and upsert=True
@@ -29,4 +29,3 @@ def scrape():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
